@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Systematic Edge — An Investment Philosophy Framework</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Geist+Mono:wght@400;500;600;700&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafaf8;
+    --bg-white: #ffffff;
+    --bg-warm: #f5f3ef;
+    --bg-accent: #1a1a1a;
+    --border: #e4e0d8;
+    --border-light: #eeebe5;
+    --text: #1a1a1a;
+    --text-body: #3d3d3d;
+    --text-secondary: #666;
+    --text-muted: #999;
+    --text-inverse: #fafaf8;
+    --ink: #1a1a1a;
+    --teal: #0d7377;
+    --teal-light: #e8f4f4;
+    --teal-mid: #b8dede;
+    --amber: #b8860b;
+    --amber-light: #fdf6e3;
+    --red: #c0392b;
+    --red-light: #fdf0ee;
+    --green: #1a7a4c;
+    --green-light: #edf7f0;
+    --blue: #2c5aa0;
+    --blue-light: #eef3fa;
+    --purple: #6b4c9a;
+    --font-display: 'Instrument Serif', serif;
+    --font-body: 'Hanken Grotesk', sans-serif;
+    --font-mono: 'Geist Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.7;
+  }
+
+  /* ═══════════════════════════════════════ */
+  /* HERO SECTION                           */
+  /* ═══════════════════════════════════════ */
+  .hero {
+    background: var(--bg-accent);
+    color: var(--text-inverse);
+    padding: 4rem 3rem 3.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 0%, rgba(13,115,119,0.08) 50%, rgba(13,115,119,0.15) 100%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 1rem;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--text-inverse);
+    max-width: 650px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--teal-mid);
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+    margin-top: 1rem;
+    max-width: 520px;
+    line-height: 1.6;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ═══════════════════════════════════════ */
+  /* VISUAL SUMMARY — the hook              */
+  /* ═══════════════════════════════════════ */
+  .summary-band {
+    background: var(--bg-white);
+    border-bottom: 1px solid var(--border);
+    padding: 3rem 3rem 2.5rem;
+  }
+
+  .summary-band h2 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+    animation: fadeUp 0.5s 0.3s ease both;
+  }
+
+  .summary-lead {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    animation: fadeUp 0.5s 0.4s ease both;
+  }
+
+  /* The 5-layer visual pipeline */
+  .pipeline {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    max-width: 900px;
+    margin: 0 auto;
+    animation: fadeUp 0.6s 0.5s ease both;
+  }
+
+  .pipe-stage {
+    flex: 1;
+    text-align: center;
+    padding: 1.2rem 0.8rem 1rem;
+    position: relative;
+    border: 1px solid var(--border);
+    border-right: none;
+    background: var(--bg-white);
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .pipe-stage:first-child { border-radius: 8px 0 0 8px; }
+  .pipe-stage:last-child { border-radius: 0 8px 8px 0; border-right: 1px solid var(--border); }
+
+  .pipe-stage:hover {
+    background: var(--bg-warm);
+    transform: translateY(-2px);
+    z-index: 1;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  }
+
+  .pipe-stage::after {
+    content: '→';
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    z-index: 2;
+    background: var(--bg-white);
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
+  .pipe-stage:last-child::after { display: none; }
+
+  .pipe-num {
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .pipe-stage:nth-child(1) .pipe-num { color: var(--purple); }
+  .pipe-stage:nth-child(2) .pipe-num { color: var(--blue); }
+  .pipe-stage:nth-child(3) .pipe-num { color: var(--amber); }
+  .pipe-stage:nth-child(4) .pipe-num { color: var(--green); }
+  .pipe-stage:nth-child(5) .pipe-num { color: var(--red); }
+
+  .pipe-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.35rem;
+    line-height: 1;
+  }
+
+  .pipe-title {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+
+  .pipe-desc {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  /* The 3 edges — visual callout */
+  .edges-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    max-width: 900px;
+    margin: 2rem auto 0;
+    animation: fadeUp 0.6s 0.6s ease both;
+  }
+
+  .edge-pill {
+    text-align: center;
+    padding: 1.2rem 1rem;
+    border-radius: 8px;
+    border: 1px solid;
+  }
+
+  .edge-pill:nth-child(1) { background: var(--teal-light); border-color: var(--teal-mid); }
+  .edge-pill:nth-child(2) { background: var(--amber-light); border-color: #e8d5a0; }
+  .edge-pill:nth-child(3) { background: var(--blue-light); border-color: #c4d5ed; }
+
+  .edge-pill-label {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+
+  .edge-pill:nth-child(1) .edge-pill-label { color: var(--teal); }
+  .edge-pill:nth-child(2) .edge-pill-label { color: var(--amber); }
+  .edge-pill:nth-child(3) .edge-pill-label { color: var(--blue); }
+
+  .edge-pill-title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 0.3rem;
+  }
+
+  .edge-pill-desc {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    line-height: 1.45;
+  }
+
+  /* ═══════════════════════════════════════ */
+  /* MAIN CONTENT                           */
+  /* ═══════════════════════════════════════ */
+  .main { max-width: 860px; margin: 0 auto; padding: 3rem 2rem 4rem; }
+
+  .section { margin-bottom: 3.5rem; }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: var(--teal);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  .section h2 {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    line-height: 1.25;
+  }
+
+  .section-intro {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    max-width: 640px;
+    line-height: 1.7;
+  }
+
+  /* Belief cards — editorial style */
+  .beliefs-list { display: flex; flex-direction: column; gap: 0; }
+
+  .belief-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 1.5rem;
+    padding: 1.15rem 0;
+    border-bottom: 1px solid var(--border-light);
+    align-items: start;
+  }
+
+  .belief-row:last-child { border-bottom: none; }
+
+  .belief-name {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--text);
+    line-height: 1.3;
+  }
+
+  .belief-tag {
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 0.12rem 0.4rem;
+    border-radius: 3px;
+    margin-top: 0.35rem;
+  }
+
+  .bt-core { color: var(--teal); background: var(--teal-light); }
+  .bt-edge { color: var(--green); background: var(--green-light); }
+  .bt-meta { color: var(--purple); background: rgba(107,76,154,0.08); }
+  .bt-risk { color: var(--red); background: var(--red-light); }
+
+  .belief-body {
+    font-size: 0.85rem;
+    color: var(--text-body);
+    line-height: 1.7;
+  }
+
+  .belief-body strong { color: var(--text); font-weight: 600; }
+
+  .belief-impl {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--teal);
+    background: var(--teal-light);
+    padding: 0.4rem 0.65rem;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+    display: inline-block;
+    line-height: 1.5;
+  }
+
+  /* Edge mapping table */
+  .edge-map {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .edge-map thead th {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: var(--bg-warm);
+    padding: 0.7rem 0.85rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .edge-map tbody td {
+    font-size: 0.82rem;
+    color: var(--text-body);
+    padding: 0.7rem 0.85rem;
+    border-bottom: 1px solid var(--border-light);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+
+  .edge-map tbody tr:last-child td { border-bottom: none; }
+  .edge-map tbody tr:hover td { background: var(--bg-warm); }
+  .edge-map .em-belief { font-family: var(--font-display); font-size: 0.92rem; color: var(--text); }
+  .edge-map .em-wrong { color: var(--red); font-size: 0.78rem; }
+
+  /* Framework flow — vertical with connecting line */
+  .framework-flow {
+    position: relative;
+    padding-left: 2.5rem;
+  }
+
+  .framework-flow::before {
+    content: '';
+    position: absolute;
+    left: 11px;
+    top: 24px;
+    bottom: 24px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--purple), var(--blue), var(--amber), var(--green), var(--red));
+    border-radius: 1px;
+  }
+
+  .fw-step {
+    position: relative;
+    padding: 0.8rem 0 1.5rem 0;
+  }
+
+  .fw-step:last-child { padding-bottom: 0; }
+
+  .fw-dot {
+    position: absolute;
+    left: -2.5rem;
+    top: 0.95rem;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    font-weight: 700;
+    z-index: 1;
+  }
+
+  .fw-step:nth-child(1) .fw-dot { border-color: var(--purple); color: var(--purple); }
+  .fw-step:nth-child(2) .fw-dot { border-color: var(--blue); color: var(--blue); }
+  .fw-step:nth-child(3) .fw-dot { border-color: var(--amber); color: var(--amber); }
+  .fw-step:nth-child(4) .fw-dot { border-color: var(--green); color: var(--green); }
+  .fw-step:nth-child(5) .fw-dot { border-color: var(--red); color: var(--red); }
+
+  .fw-step h4 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--text);
+    margin-bottom: 0.15rem;
+  }
+
+  .fw-step .fw-q {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 0.4rem;
+  }
+
+  .fw-step p {
+    font-size: 0.84rem;
+    color: var(--text-body);
+    line-height: 1.65;
+  }
+
+  .fw-examples {
+    margin-top: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    background: var(--bg-warm);
+    padding: 0.55rem 0.75rem;
+    border-radius: 5px;
+    line-height: 1.7;
+    border-left: 3px solid var(--border);
+  }
+
+  /* Asset class cards */
+  .asset-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .asset-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.2rem;
+    background: var(--bg-white);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .asset-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    transform: translateY(-1px);
+  }
+
+  .asset-card h4 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--text);
+    margin-bottom: 0.1rem;
+  }
+
+  .asset-tickers {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: var(--amber);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.6rem;
+  }
+
+  .asset-card p {
+    font-size: 0.8rem;
+    color: var(--text-body);
+    line-height: 1.6;
+  }
+
+  .asset-card .nuance {
+    font-size: 0.75rem;
+    color: var(--teal);
+    font-style: italic;
+    margin-top: 0.4rem;
+  }
+
+  /* Source of edge section */
+  .edge-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .edge-card {
+    padding: 1.2rem;
+    border-radius: 8px;
+    border: 1px solid;
+  }
+
+  .edge-card:nth-child(1) { background: var(--teal-light); border-color: var(--teal-mid); }
+  .edge-card:nth-child(2) { background: var(--amber-light); border-color: #e8d5a0; }
+  .edge-card:nth-child(3) { background: var(--blue-light); border-color: #c4d5ed; }
+  .edge-card:nth-child(4) { background: var(--green-light); border-color: #b8ddb8; }
+
+  .edge-card h4 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+  }
+
+  .edge-card p {
+    font-size: 0.8rem;
+    color: var(--text-body);
+    line-height: 1.6;
+  }
+
+  /* Anti-edge callout */
+  .anti-edge {
+    background: var(--bg-accent);
+    color: var(--text-inverse);
+    border-radius: 8px;
+    padding: 1.5rem 1.8rem;
+    margin-top: 1.5rem;
+  }
+
+  .anti-edge h4 {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .anti-edge p {
+    font-size: 0.84rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.65;
+  }
+
+  .anti-edge strong { color: rgba(255,255,255,0.9); }
+
+  /* Callout boxes */
+  .callout {
+    border-radius: 6px;
+    padding: 1rem 1.2rem;
+    margin-top: 1.25rem;
+  }
+
+  .callout-teal { background: var(--teal-light); border-left: 3px solid var(--teal); }
+  .callout-amber { background: var(--amber-light); border-left: 3px solid var(--amber); }
+
+  .callout-label {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+  }
+
+  .callout-teal .callout-label { color: var(--teal); }
+  .callout-amber .callout-label { color: var(--amber); }
+  .callout p { font-size: 0.83rem; color: var(--text-body); line-height: 1.6; }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 0.5rem 0;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 2rem 0 1rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer p {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* ═══════════════════════════════════════ */
+  /* TABLET (≤ 768px)                       */
+  /* ═══════════════════════════════════════ */
+  @media (max-width: 768px) {
+    .hero { padding: 2.5rem 1.5rem 2rem; }
+    .hero h1 { font-size: 1.75rem; }
+    .summary-band { padding: 2rem 1.5rem; }
+    .main { padding: 2rem 1.25rem; }
+    .pipeline { flex-direction: column; }
+    .pipe-stage { border-right: 1px solid var(--border); border-bottom: none; }
+    .pipe-stage:first-child { border-radius: 8px 8px 0 0; }
+    .pipe-stage:last-child { border-radius: 0 0 8px 8px; border-bottom: 1px solid var(--border); }
+    .pipe-stage::after { display: none; }
+    .edges-row { grid-template-columns: 1fr; }
+    .belief-row { grid-template-columns: 1fr; gap: 0.4rem; }
+    .asset-grid, .edge-cards { grid-template-columns: 1fr; }
+    .section h2 { font-size: 1.35rem; }
+
+    /* Table horizontal scroll */
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 -1.25rem; padding: 0 1.25rem; }
+    .edge-map { min-width: 600px; }
+  }
+
+  /* ═══════════════════════════════════════ */
+  /* MOBILE (≤ 480px) — iOS & Android       */
+  /* ═══════════════════════════════════════ */
+  @media (max-width: 480px) {
+    /* Prevent iOS text size inflation */
+    html { -webkit-text-size-adjust: 100%; }
+
+    /* Spacing */
+    .hero { padding: 2rem 1.15rem 1.5rem; }
+    .hero h1 { font-size: 1.45rem; line-height: 1.2; }
+    .hero-subtitle { font-size: 0.88rem; margin-top: 0.75rem; }
+    .hero-eyebrow { font-size: 0.58rem; }
+
+    .summary-band { padding: 1.5rem 1.15rem 1.25rem; }
+    .summary-band h2 { font-size: 1.2rem; }
+    .summary-lead { font-size: 0.82rem; margin-bottom: 1.25rem; }
+
+    .main { padding: 1.5rem 1rem 3rem; }
+
+    /* Pipeline — compact vertical cards */
+    .pipeline { gap: 0; }
+    .pipe-stage { 
+      padding: 1rem 0.9rem;
+      display: grid;
+      grid-template-columns: 2.2rem 1fr;
+      grid-template-rows: auto auto;
+      gap: 0 0.6rem;
+      text-align: left;
+    }
+    .pipe-icon { 
+      grid-row: 1 / 3; 
+      align-self: center; 
+      font-size: 1.3rem; 
+      text-align: center;
+    }
+    .pipe-num { 
+      margin-bottom: 0.1rem; 
+      font-size: 0.5rem; 
+    }
+    .pipe-title { font-size: 0.8rem; margin-bottom: 0.1rem; }
+    .pipe-desc { font-size: 0.7rem; line-height: 1.4; }
+
+    /* Edge pills — single column, more compact */
+    .edges-row { gap: 0.6rem; margin-top: 1.25rem; }
+    .edge-pill { padding: 0.9rem 0.8rem; text-align: left; }
+    .edge-pill-title { font-size: 1rem; }
+    .edge-pill-desc { font-size: 0.72rem; }
+
+    /* Sections */
+    .section { margin-bottom: 2.5rem; }
+    .section-label { font-size: 0.55rem; }
+    .section h2 { font-size: 1.25rem; }
+    .section-intro { font-size: 0.84rem; }
+
+    /* Belief rows — stacked */
+    .belief-row { padding: 0.9rem 0; }
+    .belief-name { font-size: 0.95rem; }
+    .belief-body { font-size: 0.82rem; }
+    .belief-impl { font-size: 0.68rem; padding: 0.35rem 0.55rem; }
+    .belief-tag { font-size: 0.5rem; }
+
+    /* Edge mapping table — horizontal scroll */
+    .table-wrap { 
+      overflow-x: auto; 
+      -webkit-overflow-scrolling: touch; 
+      margin: 0 -1rem; 
+      padding: 0 1rem;
+      scrollbar-width: thin;
+    }
+    .edge-map { min-width: 580px; font-size: 0.76rem; }
+    .edge-map thead th { font-size: 0.58rem; padding: 0.55rem 0.65rem; }
+    .edge-map tbody td { padding: 0.55rem 0.65rem; font-size: 0.76rem; }
+
+    /* Framework flow — tighter spacing */
+    .framework-flow { padding-left: 2.2rem; }
+    .framework-flow::before { left: 9px; }
+    .fw-dot { 
+      width: 20px; height: 20px; 
+      left: -2.2rem; 
+      font-size: 0.5rem;
+      top: 0.85rem;
+    }
+    .fw-step h4 { font-size: 0.95rem; }
+    .fw-step .fw-q { font-size: 0.78rem; }
+    .fw-step p { font-size: 0.8rem; }
+    .fw-examples { font-size: 0.65rem; padding: 0.45rem 0.6rem; }
+    .fw-step { padding-bottom: 1.2rem; }
+
+    /* Asset cards — single column, more compact */
+    .asset-grid { gap: 0.7rem; }
+    .asset-card { padding: 1rem; }
+    .asset-card h4 { font-size: 0.95rem; }
+    .asset-tickers { font-size: 0.55rem; }
+    .asset-card p { font-size: 0.78rem; }
+    .asset-card .nuance { font-size: 0.72rem; }
+
+    /* Edge cards */
+    .edge-cards { gap: 0.7rem; }
+    .edge-card { padding: 1rem; }
+    .edge-card h4 { font-size: 0.95rem; }
+    .edge-card p { font-size: 0.78rem; }
+
+    /* Anti-edge */
+    .anti-edge { padding: 1.2rem 1.15rem; }
+    .anti-edge h4 { font-size: 1rem; }
+    .anti-edge p { font-size: 0.8rem; }
+
+    /* Callouts */
+    .callout { padding: 0.85rem 1rem; }
+    .callout p { font-size: 0.8rem; }
+
+    /* Touch targets — ensure tappable elements are ≥ 44px */
+    .pipe-stage { min-height: 60px; }
+    .asset-card, .edge-card, .edge-pill { min-height: 44px; }
+
+    /* Disable hover transforms on touch */
+    .pipe-stage:hover,
+    .asset-card:hover { 
+      transform: none; 
+      box-shadow: none; 
+    }
+
+    /* Safe area for notched phones (iPhone X+) */
+    .hero { padding-left: max(1.15rem, env(safe-area-inset-left)); padding-right: max(1.15rem, env(safe-area-inset-right)); }
+    .main { padding-left: max(1rem, env(safe-area-inset-left)); padding-right: max(1rem, env(safe-area-inset-right)); }
+    .footer { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
+  }
+
+  /* ═══════════════════════════════════════ */
+  /* SMALL MOBILE (≤ 360px) — SE, older     */
+  /* ═══════════════════════════════════════ */
+  @media (max-width: 360px) {
+    .hero h1 { font-size: 1.25rem; }
+    .hero { padding: 1.5rem 1rem 1.25rem; }
+    .main { padding: 1.25rem 0.85rem 2.5rem; }
+    .section h2 { font-size: 1.1rem; }
+    .pipe-stage { padding: 0.8rem 0.7rem; }
+    .belief-body { font-size: 0.78rem; }
+    .fw-step p { font-size: 0.76rem; }
+    .anti-edge h4 { font-size: 0.92rem; }
+  }
+
+  @media print {
+    .hero { padding: 1.5rem; background: #333; }
+    .pipe-stage:hover, .asset-card:hover { transform: none; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<div class="hero">
+  <div class="hero-eyebrow">Investment Philosophy Framework</div>
+  <h1>Building <em>Systematic Edge</em> from Investment Beliefs</h1>
+  <div class="hero-subtitle">A framework for translating convictions into tradeable, repeatable strategies — across equities, commodities, fixed income, and currencies.</div>
+</div>
+
+<!-- ═══════════════ VISUAL SUMMARY ═══════════════ -->
+<div class="summary-band">
+  <h2>The Framework at a Glance</h2>
+  <div class="summary-lead">Every trade — regardless of asset class — passes through the same five layers.</div>
+
+  <div class="pipeline">
+    <div class="pipe-stage">
+      <div class="pipe-num">Layer 1</div>
+      <div class="pipe-icon">🔍</div>
+      <div class="pipe-title">Thesis</div>
+      <div class="pipe-desc">Why should this asset trend? Fundamental or structural reason.</div>
+    </div>
+    <div class="pipe-stage">
+      <div class="pipe-num">Layer 2</div>
+      <div class="pipe-icon">📊</div>
+      <div class="pipe-title">Trend Confirm</div>
+      <div class="pipe-desc">Is price confirming? Multi-timeframe alignment (W→D→4H→1H).</div>
+    </div>
+    <div class="pipe-stage">
+      <div class="pipe-num">Layer 3</div>
+      <div class="pipe-icon">🌐</div>
+      <div class="pipe-title">Breadth Check</div>
+      <div class="pipe-desc">Broad-based or isolated? Cross-asset validation.</div>
+    </div>
+    <div class="pipe-stage">
+      <div class="pipe-num">Layer 4</div>
+      <div class="pipe-icon">⚡</div>
+      <div class="pipe-title">Execute</div>
+      <div class="pipe-desc">ATR-sized entry. Max 2% risk. Scale into winners.</div>
+    </div>
+    <div class="pipe-stage">
+      <div class="pipe-num">Layer 5</div>
+      <div class="pipe-icon">🎯</div>
+      <div class="pipe-title">Manage</div>
+      <div class="pipe-desc">Trail with Supertrend. Let winners run, cut losers fast.</div>
+    </div>
+  </div>
+
+  <div class="edges-row">
+    <div class="edge-pill">
+      <div class="edge-pill-label">Patience Edge</div>
+      <div class="edge-pill-title">Tolerate losing trades</div>
+      <div class="edge-pill-desc">Accept sub-50% win rate in exchange for asymmetric right-tail payoffs. Most participants can't.</div>
+    </div>
+    <div class="edge-pill">
+      <div class="edge-pill-label">Deployment Edge</div>
+      <div class="edge-pill-title">Deploy after drawdowns</div>
+      <div class="edge-pill-desc">Allocate to strategies after flat periods, not after strong runs. Entry point discipline, not regime-conditioning.</div>
+    </div>
+    <div class="edge-pill">
+      <div class="edge-pill-label">Process Edge</div>
+      <div class="edge-pill-title">Multi-layer conviction</div>
+      <div class="edge-pill-desc">Thesis + trend + breadth + sizing + management. Five filters, not one.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ MAIN CONTENT ═══════════════ -->
+<div class="main">
+
+  <!-- BELIEFS -->
+  <div class="section">
+    <div class="section-label">Section 01</div>
+    <h2>Core Investment Beliefs</h2>
+    <div class="section-intro">Each belief carries a direct implementation requirement. Beliefs without implementation are just opinions.</div>
+
+    <div class="beliefs-list">
+      <div class="belief-row">
+        <div>
+          <div class="belief-name">Trends persist</div>
+          <div class="belief-tag bt-core">Core</div>
+        </div>
+        <div class="belief-body">Markets trend more than they mean-revert over medium horizons. Supported by Moskowitz, Ooi & Pedersen (2012) across equities, bonds, commodities, and currencies. <strong>Primary strategy family = trend-following.</strong> Never fight the weekly timeframe.
+          <div class="belief-impl">→ Supertrend, Darvas breakouts, multi-speed momentum composites</div>
+        </div>
+      </div>
+
+      <div class="belief-row">
+        <div>
+          <div class="belief-name">Right-tail convexity over hit rate</div>
+          <div class="belief-tag bt-edge">Edge</div>
+        </div>
+        <div class="belief-body">A few outsized winners drive returns. Start small, scale into winners, never cap upside. Accept a sub-50% win rate in exchange for asymmetric payoffs — the mathematical core of trend-following.
+          <div class="belief-impl">→ Position sizing is the real edge, not signal accuracy</div>
+        </div>
+      </div>
+
+      <div class="belief-row">
+        <div>
+          <div class="belief-name">Rules beat discretion</div>
+          <div class="belief-tag bt-core">Core</div>
+        </div>
+        <div class="belief-body">Purely rules-based systems remove emotional attachment. Every strategy must have codified entry, exit, and sizing rules before deployment. <strong>If you can't backtest it, you can't trade it.</strong></div>
+      </div>
+
+      <div class="belief-row">
+        <div>
+          <div class="belief-name">Entry point discipline</div>
+          <div class="belief-tag bt-meta">Meta</div>
+        </div>
+        <div class="belief-body">Deploy strategies after flat or mildly negative stretches, not after strong runs. This is behavioural calibration — when trailing Sharpe is high, your drawdown tolerance anchors to an unsustainable baseline. Literature supports: Clare et al. (2016), Huang et al. (2020), Arnott et al. (2017).
+          <div class="belief-impl">→ If trailing 6-12mo Sharpe &gt; 1.5, wait. If flat/negative, deploy.</div>
+        </div>
+      </div>
+
+      <div class="belief-row">
+        <div>
+          <div class="belief-name">Survive all regimes</div>
+          <div class="belief-tag bt-core">Core</div>
+        </div>
+        <div class="belief-body">Good strategies survive all market regimes. Overly regime-conditioned strategies break when regimes shift unpredictably. <strong>Time your capital deployment, not the strategy itself.</strong></div>
+      </div>
+
+      <div class="belief-row">
+        <div>
+          <div class="belief-name">Multi-timeframe confirmation</div>
+          <div class="belief-tag bt-edge">Edge</div>
+        </div>
+        <div class="belief-body">Higher timeframes set direction, lower timeframes refine timing. Require 3 of 4 timeframe alignment (Weekly → Daily → 4H → 1H) before any trade. Applies across all liquid asset classes.
+          <div class="belief-impl">→ Weekly = permission, Daily = setup, 4H = timing, 1H = execution</div>
+        </div>
+      </div>
+
+      <div class="belief-row">
+        <div>
+          <div class="belief-name">Factor + trend combo</div>
+          <div class="belief-tag bt-edge">Edge</div>
+        </div>
+        <div class="belief-body">Fundamental quality screens identify <em>what</em> to trade. Trend-following determines <em>when</em>. Neither alone is sufficient. Value investors buy too early; momentum traders buy garbage. The combination solves both.</div>
+      </div>
+
+      <div class="belief-row">
+        <div>
+          <div class="belief-name">Cross-asset breadth</div>
+          <div class="belief-tag bt-edge">Edge</div>
+        </div>
+        <div class="belief-body">Narrow leadership is fragile. Before sizing up, check if the move is broad-based. Silver + gold + copper + DXY all confirming = high conviction. Monitor breadth composites across asset classes.
+          <div class="belief-impl">→ Risk-off composite across 42+ ETFs as sanity check</div>
+        </div>
+      </div>
+
+      <div class="belief-row">
+        <div>
+          <div class="belief-name">Sizing drives compounding</div>
+          <div class="belief-tag bt-risk">Risk</div>
+        </div>
+        <div class="belief-body">Max 2% account risk per trade. ATR-based sizing normalises risk across volatility regimes. Start small, scale into winners. <strong>The sizing system, not the signal, determines long-run wealth creation.</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDGE MAPPING -->
+  <div class="section">
+    <div class="section-label">Section 02</div>
+    <h2>Belief → Edge → What Others Get Wrong</h2>
+
+    <div class="table-wrap">
+    <table class="edge-map">
+      <thead>
+        <tr>
+          <th style="width:18%">Belief</th>
+          <th style="width:27%">Where Edge Lives</th>
+          <th style="width:28%">Implementation</th>
+          <th style="width:27%">Common Mistake</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="em-belief">Trends persist</td>
+          <td>Patience to hold through noise longer than feels comfortable</td>
+          <td>Supertrend trailing stops, multi-speed momentum composites, Darvas breakouts</td>
+          <td class="em-wrong">Cut winners early. Add to losers. Forecast reversals instead of following price.</td>
+        </tr>
+        <tr>
+          <td class="em-belief">Right-tail convexity</td>
+          <td>Asymmetric payoff: small frequent losses, large occasional wins</td>
+          <td>Scale into winners, never average down. Trailing stops that never tighten.</td>
+          <td class="em-wrong">Optimise for hit rate. Take profits too early to "lock in gains."</td>
+        </tr>
+        <tr>
+          <td class="em-belief">Entry point discipline</td>
+          <td>Behavioural edge — deploy when drawdown tolerance is correctly calibrated</td>
+          <td>Monitor trailing Sharpe. Deploy when below ~0.5. Wait if above ~1.5.</td>
+          <td class="em-wrong">Allocate after strong runs (performance chasing). Abandon after first normal drawdown.</td>
+        </tr>
+        <tr>
+          <td class="em-belief">MTF confirmation</td>
+          <td>Signal quality — filter noise without over-constraining opportunity</td>
+          <td>W → D → 4H → 1H framework. 3-of-4 alignment required.</td>
+          <td class="em-wrong">Trade on a single timeframe. Or use so many they always conflict.</td>
+        </tr>
+        <tr>
+          <td class="em-belief">Factor + trend</td>
+          <td>Combine "what" (fundamentals) with "when" (price momentum)</td>
+          <td>Fundamental screen → Supertrend/breakout entry only.</td>
+          <td class="em-wrong">Value investors buy too early. Momentum traders buy garbage.</td>
+        </tr>
+        <tr>
+          <td class="em-belief">Cross-asset breadth</td>
+          <td>Conviction sizing — broad moves have higher follow-through</td>
+          <td>Risk-off composite. Check correlated assets before sizing up.</td>
+          <td class="em-wrong">Trade assets in isolation. Ignore macro tape.</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- FRAMEWORK -->
+  <div class="section">
+    <div class="section-label">Section 03</div>
+    <h2>The Universal Strategy Framework</h2>
+    <div class="section-intro">Whether trading gold, a Russell 2000 small-cap, USDJPY, or Bitcoin — the process is identical. Only the specific parameters adapt.</div>
+
+    <div class="framework-flow">
+      <div class="fw-step">
+        <div class="fw-dot">1</div>
+        <h4>Thesis & Candidate Selection</h4>
+        <div class="fw-q">Why should this asset trend?</div>
+        <p>Identify a structural or cyclical reason for directional movement. For equities: fundamental quality screen. For commodities: supply-demand thesis. For FX: rate differentials. This answers "what to trade."</p>
+        <div class="fw-examples">Equities: ROE, FCF yield, EBITDA growth, small-cap bias<br>Gold: Real rates, CB buying, USD weakness<br>FX: Carry, policy divergence</div>
+      </div>
+
+      <div class="fw-step">
+        <div class="fw-dot">2</div>
+        <h4>Multi-Timeframe Trend Confirmation</h4>
+        <div class="fw-q">Is price confirming the thesis?</div>
+        <p>Apply the W→D→4H→1H framework. Weekly must show structural trend. Daily must show a setup. 4H confirms timing. Thesis without price confirmation = no trade. Require 3-of-4 alignment.</p>
+        <div class="fw-examples">Weekly: EMA ribbon ordered, Supertrend aligned → permission<br>Daily: Supertrend flip or EMA pullback → setup<br>4H: RSI turning + Supertrend confirming → timing</div>
+      </div>
+
+      <div class="fw-step">
+        <div class="fw-dot">3</div>
+        <h4>Breadth & Cross-Asset Validation</h4>
+        <div class="fw-q">Is the move broad-based or isolated?</div>
+        <p>Check related assets. Silver + gold + copper confirming together = high conviction. Equity breakout with strong sector breadth = quality signal. Use risk-off composite and NH-NL spread as sanity checks.</p>
+        <div class="fw-examples">Gold: Check XAGUSD, COPX, DXY, TIP, real rates<br>Equity: Sector breadth, VIX, credit spreads<br>EM: DXY direction, commodity complex</div>
+      </div>
+
+      <div class="fw-step">
+        <div class="fw-dot">4</div>
+        <h4>Entry, Sizing & Execution</h4>
+        <div class="fw-q">How much, and exactly where?</div>
+        <p>Enter on 1H using VWAP/EMA pullbacks. Size with ATR — max 2% risk per trade. Start at 50%, add 25% on first confirmation, 25% on second. Stop below 4H Supertrend or structural level.</p>
+        <div class="fw-examples">Size = (2% × Account) ÷ (Entry − Stop) ÷ Point Value<br>Scale: 50% → 75% → 100% as trend confirms<br>Stop: 4H Supertrend or entry − 3×ATR</div>
+      </div>
+
+      <div class="fw-step">
+        <div class="fw-dot">5</div>
+        <h4>Management & Right-Tail Capture</h4>
+        <div class="fw-q">How to hold through the noise?</div>
+        <p>Trail stops with the Daily Supertrend — never manually tighten. Partial profit at 2× risk or major structural levels. If Daily Supertrend flips, full exit. Never add to losers.</p>
+        <div class="fw-examples">Hold: Daily Supertrend intact → stay in<br>Partial: 30% at 2× risk, trail remainder<br>Exit: Daily Supertrend flips → close. Weekly flips → reassess thesis</div>
+      </div>
+    </div>
+
+    <div class="callout callout-amber">
+      <div class="callout-label">The Meta-Layer — When to Deploy</div>
+      <p>Before deploying capital into any strategy or asset, check trailing 6-12 month performance. If trailing Sharpe > 1.5, <strong>wait</strong>. If flat or negative, that's your deployment window. Entry point discipline — same logic as DCA but applied at the strategy level.</p>
+    </div>
+  </div>
+
+  <!-- FRAMEWORK -->
+  <div class="section">
+    <div class="section-label">Section 04</div>
+    <h2>Asset Class Applications</h2>
+    <div class="section-intro">Same framework, different parameters. The process stays constant — only the inputs change.</div>
+
+    <div class="asset-grid">
+      <div class="asset-card">
+        <h4>Precious Metals</h4>
+        <div class="asset-tickers">XAUUSD · XAGUSD · GDX</div>
+        <p><strong>Thesis:</strong> Real rate cycle, central bank demand, USD dynamics. Silver = high-beta gold with industrial overlay.</p>
+        <p><strong>Breadth:</strong> Confirm with DXY, TIP, copper, gold miners.</p>
+        <div class="nuance">Wider stops — silver ATR is extreme. Prefer London/NY overlap. Watch COMEX expiry.</div>
+      </div>
+
+      <div class="asset-card">
+        <h4>US Equities — Multibaggers</h4>
+        <div class="asset-tickers">RUSSELL 2000 · S&P 500</div>
+        <p><strong>Thesis:</strong> Fundamental screen — small-cap, high ROE, FCF yield, reasonable P/B. Darvas Box breakouts on volume.</p>
+        <p><strong>Breadth:</strong> Sector breadth, VIX regime, market-cap participation.</p>
+        <div class="nuance">Longer holds needed. Accept wider stops, lower win rate. Scale aggressively on confirmations.</div>
+      </div>
+
+      <div class="asset-card">
+        <h4>Global Macro ETFs</h4>
+        <div class="asset-tickers">42-ETF UNIVERSE · CROSS-ASSET</div>
+        <p><strong>Thesis:</strong> Rate cycles, policy divergence, structural themes (AI, infrastructure, nuclear renaissance).</p>
+        <p><strong>Breadth:</strong> Risk-off composite, defensive rotation, NH-NL spread.</p>
+        <div class="nuance">Multi-speed momentum composite. Blend score for ranking, absolute momentum for participation.</div>
+      </div>
+
+      <div class="asset-card">
+        <h4>Commodities & Miners</h4>
+        <div class="asset-tickers">COPX · URA · XME · WEAT · UNG</div>
+        <p><strong>Thesis:</strong> Supply-demand structural. Copper = electrification. Uranium = nuclear. Nat gas = seasonal.</p>
+        <p><strong>Breadth:</strong> Equity-commodity correlation breaks = higher conviction.</p>
+        <div class="nuance">Extreme volatility in UNG, WEAT. Size smaller, stops wider. Weekly TF carries more weight.</div>
+      </div>
+
+      <div class="asset-card">
+        <h4>International Equities</h4>
+        <div class="asset-tickers">FXI · INDA · EWJ · EWZ · EWY</div>
+        <p><strong>Thesis:</strong> Idiosyncratic policy cycles — China stimulus, India demographics, Japan BOJ, Brazil carry.</p>
+        <p><strong>Breadth:</strong> DXY (strong dollar kills EM), commodity complex.</p>
+        <div class="nuance">FX exposure is implicit. Consider DXY as a regime filter. Trend-following works well on country ETFs.</div>
+      </div>
+
+      <div class="asset-card">
+        <h4>Fixed Income & Currencies</h4>
+        <div class="asset-tickers">TLT · IEF · HYG · UUP · FXE · FXY</div>
+        <p><strong>Thesis:</strong> Rate cycle, policy divergence, credit spread dynamics, safe-haven flows.</p>
+        <p><strong>Breadth:</strong> Bond-equity correlation regime. When positive, diversification breaks down.</p>
+        <div class="nuance">Primarily defensive/hedge. Size smaller, trail wider, hold longer.</div>
+      </div>
+    </div>
+
+    <div class="callout callout-teal">
+      <div class="callout-label">The Common Thread</div>
+      <p>Every application follows the same 5-layer framework. The only changes: the fundamental thesis (Layer 1), specific indicator parameters (Layer 2), and cross-asset checklist (Layer 3). The edge is the systematic process itself — not any single asset class insight.</p>
+    </div>
+  </div>
+
+  <!-- SOURCE OF EDGE -->
+  <div class="section">
+    <div class="section-label">Section 05</div>
+    <h2>Where the Edge Comes From</h2>
+    <div class="section-intro">Edge = doing something the average participant can't or won't do.</div>
+
+    <div class="edge-cards">
+      <div class="edge-card">
+        <h4>Patience</h4>
+        <p>Most can't sit through 40-60% losing trades waiting for the right-tail winner. Rules-based systems remove the impulse to intervene. The trend premium exists <em>because</em> most people can't tolerate the drawdowns.</p>
+      </div>
+      <div class="edge-card">
+        <h4>Deployment Timing</h4>
+        <p>Allocate when others are abandoning (after drawdowns), not when crowded (after strong runs). The strategy-level equivalent of buying fear and selling greed. Least intuitive, most durable.</p>
+      </div>
+      <div class="edge-card">
+        <h4>Process Depth</h4>
+        <p>Five-layer framework vs single-timeframe, single-signal trading. Thesis + trend + breadth + sizing + management gives higher-quality trade selection than any individual component.</p>
+      </div>
+      <div class="edge-card">
+        <h4>Infrastructure</h4>
+        <p>Backtesting dashboards, portfolio command centre, Darvas scanner, trend-following systems, and risk composites. Quantitative toolkit that most discretionary traders lack. Test before deploy, monitor in real-time.</p>
+      </div>
+    </div>
+
+    <div class="anti-edge">
+      <h4>What is explicitly not the edge</h4>
+      <p>Predicting where gold goes next month. Forecasting central bank policy. Calling tops or bottoms. Having better macro information than the market. <strong>The edge is following price with discipline, managing risk mechanically, and deploying capital at behaviourally optimal times.</strong> Stay in the lane.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Systematic Edge — Investment Philosophy Framework</p>
+  </div>
+
+</div>
+
+</body>
+</html>
